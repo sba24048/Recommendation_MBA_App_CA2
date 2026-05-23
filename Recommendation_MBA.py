@@ -16,10 +16,11 @@ rules_fp1 = pd.read_csv("rules_fp1.csv.gzip", compression="gzip")
 # Games Recommendations
 
 clean_games = basket_merged[["item_id", "title", "genres"]].drop_duplicates(subset="title").reset_index(drop=True)
+clean_games["genres"] = clean_games["genres"].fillna("")
 
 tfidf = TfidfVectorizer(stop_words = "english")                                     # Create TF-IDF vectorizer, removing common English words
 
-tfidf_matrix = tfidf.fit_transform(games["genres"])                               # Convert movie content text into TF-IDF feature matrix
+tfidf_matrix = tfidf.fit_transform(clean_games["genres"])                              # Convert movie content text into TF-IDF feature matrix
 
 content_sim = cosine_similarity(tfidf_matrix)                                     # Compute cosine similarity between all games
 
