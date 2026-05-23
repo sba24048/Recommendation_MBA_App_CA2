@@ -5,8 +5,6 @@ import streamlit as st
 from sklearn.feature_extraction.text import TfidfVectorizer   
 from sklearn.metrics.pairwise import cosine_similarity        
 
-st.title("Recommendations & Market Basket")#, width="stretch")
-
 # Streamlit App Repository:https://github.com/sba24048/Recommendation_MBA_App_CA2
 
 
@@ -48,6 +46,9 @@ def recommend_genre_based(title, top_n, games, games_idx, content_sim):   # Func
 
     return recs.reset_index(drop=True)                                       # Return result
 
+st.title("Recommendations & Market Basket")#, width="stretch")
+
+st.subheader("Choose A Game to Receive Recommendations")
 select_game = st.selectbox(label="Choose Game", options=(clean_games["title"].dropna().unique().tolist()))
 
 top_n = st.slider(
@@ -61,7 +62,7 @@ recs = recommend_genre_based(title = select_game, top_n = top_n, games = clean_g
 
 st.dataframe(recs)
 
-st.subheader("Choose A Game to Receive Recommendations")
+
 
 
 
