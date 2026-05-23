@@ -46,7 +46,7 @@ def recommend_genre_based(title, top_n, games, games_idx, content_sim):   # Func
 
     return recs.reset_index(drop=True)                                       # Return result
 
-select_game = st.selectbox(label="Choose Game", options=(clean_games["title"].dropna().unique().tolist())
+select_game = st.selectbox(label="Choose Game", options=(clean_games["title"].dropna().unique().tolist()))
 
 
 recs = recommend_genre_based(title = selected_game, top_n = 10, games = clean_games, games_idx = games_idx, content_sim = content_sim)
