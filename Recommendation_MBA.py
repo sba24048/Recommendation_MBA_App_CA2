@@ -61,6 +61,9 @@ recs = recommend_genre_based(title = select_game, top_n = top_n, games = clean_g
 
 st.dataframe(recs)
 
+st.subheader("Choose A Game to Receive Recommendations")
+
+
 
 
 
