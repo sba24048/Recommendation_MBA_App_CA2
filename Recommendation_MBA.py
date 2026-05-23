@@ -8,9 +8,14 @@ from sklearn.metrics.pairwise import cosine_similarity
 # Streamlit App Repository:https://github.com/sba24048/Recommendation_MBA_App_CA2
 
 
-basket_merged = pd.read_csv("video_games_for_viz.csv.gzip", compression="gzip")
-mba = pd.read_csv("mba_sample.csv.gzip", compression="gzip")
-rules_fp1 = pd.read_csv("rules_fp1.csv.gzip", compression="gzip")
+@st.cache_data
+def load_data():
+    basket_merged = pd.read_csv("video_games_for_viz.csv.gzip", compression="gzip")
+    mba = pd.read_csv("mba_sample.csv.gzip", compression="gzip")
+    rules_fp1 = pd.read_csv("rules_fp1.csv.gzip", compression="gzip")
+    return basket_merged, mba, rules_fp1
+
+basket_merged, mba, rules_fp1 = load_data()
 
 # Games Recommendations
 
