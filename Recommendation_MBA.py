@@ -5,7 +5,7 @@ import streamlit as st
 from sklearn.feature_extraction.text import TfidfVectorizer   
 from sklearn.metrics.pairwise import cosine_similarity        
 
-st.title("Recommendations & Market Basket", width="stretch")
+st.title("Recommendations & Market Basket")#, width="stretch")
 
 # Streamlit App Repository:https://github.com/sba24048/Recommendation_MBA_App_CA2
 
