@@ -9,8 +9,8 @@ st.title("Recommendations & Market Basket")#, width="stretch")
 # Streamlit App Repository:https://github.com/sba24048/Recommendation_MBA_App_CA2
 
 
-basket_merged = pd.read_parquet("video_games_for_viz.csv.gzip", compression="gzip")
-mba = pd.read_parquet("mba_sample.csv.gzip", compression="gzip")
+basket_merged = pd.read_csv("video_games_for_viz.csv.gzip", compression="gzip")
+mba = pd.read_csv("mba_sample.csv.gzip", compression="gzip")
 rules_fp1 = pd.read_csv("rules_fp1.csv.gzip", compression="gzip")
 
 # Games Recommendations
