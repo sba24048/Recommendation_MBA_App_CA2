@@ -14,10 +14,13 @@ mba = pd.read_parquet("mba_sample.csv.gzip", compression="gzip")
 rules_fp1 = pd.read_csv("rules_fp1.csv.gzip", compression="gzip")
 
 # Games Recommendations
+
 games=basket_merged.copy()
 
 tfidf = TfidfVectorizer(stop_words = "english")                                     # Create TF-IDF vectorizer, removing common English words
+
 tfidf_matrix = tfidf.fit_transform(games["genres"])                               # Convert movie content text into TF-IDF feature matrix
+
 content_sim = cosine_similarity(tfidf_matrix)                                       # Compute cosine similarity between all games
 
 games_idx = pd.Series(games.index, index = games["title"]).drop_duplicates()      # Map movie titles to their index
@@ -49,7 +52,7 @@ def recommend_genre_based(title, top_n, games, games_idx, content_sim):   # Func
 select_game = st.selectbox(label="Choose Game", options=(clean_games["title"].dropna().unique().tolist()))
 
 
-recs = recommend_genre_based(title = selected_game, top_n = 10, games = clean_games, games_idx = games_idx, content_sim = content_sim)
+recs = recommend_genre_based(title = select_game, top_n = 10, games = clean_games, games_idx = games_idx, content_sim = content_sim)
 
 
 
